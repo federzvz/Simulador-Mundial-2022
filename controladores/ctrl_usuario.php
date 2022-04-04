@@ -147,11 +147,6 @@ function logout(){
 
 
 
-function favoritos(){
-	$usuario=new Usuario();
-	$usuarios=$usuario->getListado();	
-	echo json_encode($usuarios);
-}
 
 }
 ?>
