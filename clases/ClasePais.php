@@ -1,19 +1,33 @@
 <?php
-class Pais
+class Pais extends ClaseBase 
 {
+	private $idPais;
 	private $Mundiales;
 	private $Cant_victorias;
 	private $Cant_empates;
 	private $Cant_derrotas;
 	private $Nom_bandera;
 	
-	public function __construct($Mundiales_,$Cant_victorias_,$Cant_empates_,$Cant_derrotas_,$Nombre_bandera_){
+	/*public function __construct($Mundiales_,$Cant_victorias_,$Cant_empates_,$Cant_derrotas_,$Nombre_bandera_){
 		$this->Mundiales=$Mundiales_;
 		$this->Cant_victorias=$Cant_victorias_;
 		$this->Cant_empates=$Cant_empates_;
 		$this->Cant_derrotas=$Cant_derrotas_;
 		$this->Nom_bandera=$Nombre_bandera_;
-	}		
+	}*/
+	
+	public function __construct($obj=NULL) {
+        //$this->db=DB::conexion();
+        if(isset($obj)){
+            foreach ($obj as $key => $value) {
+                $this->$key=$value;
+            }    
+        }
+        $tabla="paises";
+        parent::__construct($tabla);
+
+    }
+
 	//Getters
 	public function getMundiales(){
 		return $this->Mundiales;
@@ -46,5 +60,22 @@ class Pais
 	public function setNom_bandera($Nom_bandera_){
 		$this->Nom_bandera=$Nom_bandera_;
 	}
+
+	public function getBusqueda($buscar){
+        $usuarios=array();
+        $stmt = $this->getDB()->prepare( 
+            "SELECT * FROM paises 
+            WHERE nombre like ? " );
+        // Le agrego % para busque los que empiezan con la letra o terminan
+        $buscar= '%'.$buscar.'%';
+        $stmt->bind_param( "s",$buscar);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+        while ($fila=$resultado->fetch_object()) {
+            $persona= new Pais ($fila);
+                $usuarios[]=$persona;
+        }
+        return $usuarios;
+    }
 }
 ?>
