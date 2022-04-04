@@ -5,6 +5,12 @@ class Partido {
     private $pais2;
     private $idPartido;
 
+    public function __construct($pais1, $pais2, $idPartido){
+		$this->pais1=$pais1;
+		$this->pais2=$pais2;
+        $this->$idPartido;
+	}	
+
     public function getPais1() {
         return $this->pais1;
     }
