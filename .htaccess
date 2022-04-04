@@ -1,0 +1,23 @@
+# Activamos el rewrite
+RewriteEngine On
+ 
+# Definimos el path del proyecto
+RewriteBase /php/framework/
+ 
+# Prohibimos el acceso a archivo ocultos 
+<Files .*>
+	Order Deny,Allow
+	Deny From All
+</Files>
+ 
+# Prohibimos la visibilidad de los archivos y carpetas de la app
+RewriteRule ^(?:clases|config|controladores|vendor)\b.* index.php/$0 [L]
+ 
+# Nos aseguramos que el archivo y/o carpeta de la siguiente regla exista
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d 
+
+
+# Rewrite all other URLs to index.php/URL
+RewriteRule ^(.*)$ index.php?url=$1 [L] 
+
