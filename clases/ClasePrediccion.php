@@ -1,6 +1,5 @@
 <?php
-class Pais extends ClaseBase 
-{
+class Prediccion extends ClaseBase {
 	private $idUsuario;
 	private $idPartido;
 	private $gol_visitante;
@@ -49,7 +48,7 @@ class Pais extends ClaseBase
 
 
 	public function getBusqueda($buscar){
-        $usuarios=array();
+        $predicciones=array();
         $stmt = $this->getDB()->prepare( 
             "SELECT * FROM prediccion 
             WHERE id_usuario like ? " );
@@ -59,10 +58,15 @@ class Pais extends ClaseBase
         $stmt->execute();
         $resultado = $stmt->get_result();
         while ($fila=$resultado->fetch_object()) {
-            $persona= new Pais ($fila);
-                $usuarios[]=$persona;
+            $prediccion= new Prediccion ($fila);
+                $predicciones[]=$prediccion;
         }
-        return $usuarios;
+        return $predicciones;
     }
+
+	public function getPorcentaje($buscar){
+		
+	}
+
 }
 ?>
