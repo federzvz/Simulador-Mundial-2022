@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 05-04-2022 a las 22:35:51
+-- Tiempo de generación: 05-04-2022 a las 22:58:36
 -- Versión del servidor: 8.0.21
 -- Versión de PHP: 7.3.21
 
@@ -116,8 +116,8 @@ INSERT INTO `paises` (`Nombre`, `Mundiales_jugados`, `Cant_victorias`, `Cant_emp
 DROP TABLE IF EXISTS `partido`;
 CREATE TABLE IF NOT EXISTS `partido` (
   `id_partido` int NOT NULL AUTO_INCREMENT,
-  `pais1` varchar(50) NOT NULL,
-  `pais2` varchar(50) NOT NULL,
+  `id_pais1` int NOT NULL,
+  `id_pais2` int NOT NULL,
   `resultado_anterior` varchar(50) NOT NULL,
   PRIMARY KEY (`id_partido`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
