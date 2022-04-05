@@ -1,10 +1,10 @@
 <?php
 class Pais extends ClaseBase 
 {
-	private $idUsuario;
-	private $idPartido;
-	private $gol_visitante;
-	private $gol_local;
+	public $idUsuario;
+	public $idPartido;
+	public $gol_visitante;
+	public $gol_local;
 
 	
 	public function __construct($obj=NULL) {
@@ -64,5 +64,22 @@ class Pais extends ClaseBase
         }
         return $usuarios;
     }
+	
+	public function getPrediccion(){
+        
+		$NewID_u=$this->getidUsuario();
+		$NewID_p=$this->getidPartido();
+		$New_visitante=$this->getVisitante();
+		$New_local=$this->getLocal();
+
+        $stmt = $this->getDB()->prepare( 
+            "INSERT INTO prediccion 
+        (id_usuario,id_partido,gol_visitante,gol_local) 
+           VALUES (?,?,?,?)" );
+        $stmt->bind_param("ssisss",$NewID_u,
+            $NewID_p,$New_visitante,$New_local);
+        return $stmt->execute();
+		
+	}
 }
 ?>
