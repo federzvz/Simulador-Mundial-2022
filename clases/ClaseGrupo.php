@@ -1,13 +1,25 @@
 <?php
-class Grupo
-{
+class Grupo extends ClaseBase {
 	private $Paises=[];
 	private $Partidos=[];
 	
-	public function __construct($Paises_,$Partidos_){
+	/*public function __construct($Paises_,$Partidos_){
 		$this->Paises=$Paises_;
 		$this->Partidos=$Partidos_;
-	}		
+	}*/
+
+	public function __construct($obj=NULL) {
+        //$this->db=DB::conexion();
+        if(isset($obj)){
+            foreach ($obj as $key => $value) {
+                $this->$key=$value;
+            }    
+        }
+        $tabla="paises";
+        parent::__construct($tabla);
+
+    }
+
 	//Getters
 	public function getPaises(){
 		return $this->Paises;
@@ -22,5 +34,21 @@ class Grupo
 	public function setPartidos($Partidos_){
 		$this->Partidos=$Partidos_;
 	}
+
+	public function getGrupos($buscar){
+        $grupos=array();
+        $stmt = $this->getDB()->prepare( 
+            "SELECT * FROM grupos " );
+        // Le agrego % para busque los que empiezan con la letra o terminan
+        $buscar= '%'.$buscar.'%';
+        $stmt->bind_param( "s",$buscar);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+        while ($fila=$resultado->fetch_object()) {
+            $grupo= new Grupo ($fila);
+                $grupos[]=$grupo;
+        }
+        return $grupos;
+    }
 }
 ?>

@@ -1,6 +1,6 @@
 <?php
 
-class Partido {
+class Partido extends ClaseBase {
     private $pais1;
     private $pais2;
     private $idPartido;

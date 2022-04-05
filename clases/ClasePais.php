@@ -1,6 +1,5 @@
 <?php
-class Pais extends ClaseBase 
-{
+class Pais extends ClaseBase {
 	private $idPais;
 	private $Mundiales;
 	private $Cant_victorias;
@@ -61,7 +60,7 @@ class Pais extends ClaseBase
 		$this->Nom_bandera=$Nom_bandera_;
 	}
 
-	public function getBusqueda($buscar){
+	public function getPaises($buscar){
         $usuarios=array();
         $stmt = $this->getDB()->prepare( 
             "SELECT * FROM paises 

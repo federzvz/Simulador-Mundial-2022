@@ -92,8 +92,6 @@ function nuevo(){
 		$usr= new Usuario();
 		$usr->setNombre($_POST["nombre"]);
 		$usr->setApellido($_POST["apellido"]);
-		$usr->setCI($_POST["ci"]);
-		$usr->setEdad($_POST["edad"]);
 		$usr->setEmail($_POST["email"]);
 		if($usr->agregar()){
 			$this->redirect("usuario","listado");
