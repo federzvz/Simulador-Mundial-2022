@@ -1,18 +1,10 @@
 <?php
-<<<<<<< HEAD
-class Prediccion extends ClaseBase {
-	private $idUsuario;
-	private $idPartido;
-	private $gol_visitante;
-	private $gol_local;
-=======
-class Pais extends ClaseBase 
+class Prediccion extends ClaseBase 
 {
 	public $idUsuario;
 	public $idPartido;
 	public $gol_visitante;
 	public $gol_local;
->>>>>>> c2940af87b8ad327478c95aaf670c1109fffa067
 
 	
 	public function __construct($obj=NULL) {
@@ -72,13 +64,11 @@ class Pais extends ClaseBase
         }
         return $predicciones;
     }
-<<<<<<< HEAD
 
 	public function getPorcentaje($buscar){
 		
 	}
 
-=======
 	
 	public function getPrediccion(){
         
@@ -96,6 +86,5 @@ class Pais extends ClaseBase
         return $stmt->execute();
 		
 	}
->>>>>>> c2940af87b8ad327478c95aaf670c1109fffa067
 }
 ?>
