@@ -132,7 +132,7 @@ class Resultado extends ClaseBase {
     }
 
 
-    public function getBusqueda($local, $visitante){
+    public function getUltimoResultado($local, $visitante){
 
         //Mostrar último resultado de cada partido
         //SELECT MAX(date) date,home_team,home_score,away_team,away_score FROM resultado WHERE home_team="Senegal" AND away_team="Egypt"
