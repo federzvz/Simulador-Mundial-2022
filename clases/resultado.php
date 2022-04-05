@@ -153,6 +153,25 @@ class Resultado extends ClaseBase {
         return $resultados;
     }
 
+    public function getInformacionPais($pais){
+        //Mostrar información de cada país
+        //SELECT * FROM resultado WHERE country= "Uruguay";
+
+        $resultados=array();
+        $stmt = $this->getDB()->prepare( "SELECT * FROM resultado WHERE country= ?" );
+        // Le agrego % para busque los que empiezan con la letra o terminan
+        
+        $stmt->bind_param( "s", $pais);
+        $stmt->execute();
+        $entidad = $stmt->get_result();
+        while ($fila=$entidad->fetch_object()) {
+            //$fila["nombre"] fetch_array
+            //$fila->nombre fetch_object
+            $resultado= new Resultado($fila);
+                $resultados[]=$resultado;
+        }
+        return $resultados;
+    }
 
 
 
