@@ -35,13 +35,11 @@ class Grupo extends ClaseBase {
 		$this->Partidos=$Partidos_;
 	}
 
-	public function getGrupos($buscar){
+	public function getGrupos(){
         $grupos=array();
         $stmt = $this->getDB()->prepare( 
             "SELECT * FROM grupos " );
         // Le agrego % para busque los que empiezan con la letra o terminan
-        $buscar= '%'.$buscar.'%';
-        $stmt->bind_param( "s",$buscar);
         $stmt->execute();
         $resultado = $stmt->get_result();
         while ($fila=$resultado->fetch_object()) {

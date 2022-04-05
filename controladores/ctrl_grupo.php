@@ -5,7 +5,9 @@ require "clases/ClaseGrupo.php";
 class ControladorGrupo extends ControladorIndex {
 	
 	function getGrupos(){
-        $grupos=getGrupos();
+        $grupo= new Grupo();
+        $grupos= $grupo->getGrupos();
+        
     }
 	
 }
