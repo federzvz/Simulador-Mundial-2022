@@ -138,7 +138,7 @@ class Resultado extends ClaseBase {
         //SELECT MAX(date) date,home_team,home_score,away_team,away_score FROM resultado WHERE home_team="Senegal" AND away_team="Egypt"
 
         $resultados=array();
-        $stmt = $this->getDB()->prepare( "SELECT MAX(date) date, home_team, home_score, away_team, away_score FROM resultado WHERE home_team = ? AND away_team = ?" );
+        $stmt = $this->getDB()->prepare( "SELECT MAX(date) date, home_team, home_score, away_team, away_score FROM resultados WHERE home_team = ? AND away_team = ?" );
         // Le agrego % para busque los que empiezan con la letra o terminan
         
         $stmt->bind_param( "ss",$local, $visitante);
@@ -158,7 +158,7 @@ class Resultado extends ClaseBase {
         //SELECT * FROM resultado WHERE country= "Uruguay";
 
         $resultados=array();
-        $stmt = $this->getDB()->prepare( "SELECT * FROM resultado WHERE country= ?" );
+        $stmt = $this->getDB()->prepare( "SELECT * FROM resultados WHERE country= ?" );
         // Le agrego % para busque los que empiezan con la letra o terminan
         
         $stmt->bind_param( "s", $pais);
