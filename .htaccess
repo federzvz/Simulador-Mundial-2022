@@ -2,7 +2,7 @@
 RewriteEngine On
  
 # Definimos el path del proyecto
-RewriteBase /php/framework/
+RewriteBase /php/Simulador-Mundial-2022/
  
 # Prohibimos el acceso a archivo ocultos 
 <Files .*>

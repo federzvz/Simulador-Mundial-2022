@@ -1,8 +1,8 @@
 <?php
 	define("DB_HOST", "localhost");
-	define("DB_USR", "");
+	define("DB_USR", "root");
 	define("DB_PASS", "");
-	define("DB_DB", "");
+	define("DB_DB", "simuladormundial ");
 	//define(DB_TYPE, "mysql");
 
 	$template_config = 
@@ -12,5 +12,5 @@
         'cache_dir' => 'libs/smarty/cache/',
         'config_dir' => 'libs/smarty/configs/',
         );
-    define ("URL_BASE","/php/framework/");
+    define ("URL_BASE","/php/Simulador-Mundial-2022/");
 ?>
