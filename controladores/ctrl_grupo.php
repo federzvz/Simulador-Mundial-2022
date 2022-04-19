@@ -10,5 +10,19 @@ class ControladorGrupo extends ControladorIndex {
         
     }
 	
+	public function getGrupos(){
+        $grupos=array();
+        $stmt = $this->getDB()->prepare( 
+            "SELECT * FROM grupos " );
+        // Le agrego % para busque los que empiezan con la letra o terminan
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+        while ($fila=$resultado->fetch_object()) {
+            $grupo= new Grupo ($fila);
+                $grupos[]=$grupo;
+        }
+        return $grupos;
+    }
+	
 }
 ?>
