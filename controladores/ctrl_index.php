@@ -2,13 +2,9 @@
 class ControladorIndex{
 
     function cargarControlador($controller){
-        echo $controller."-----";
         $controlador='ctrl_'.$controller;
-        echo $controlador."-----";
         $controlador_clase="Controlador".ucfirst($controller);
-        echo $controlador_clase."-----";
         $strFileController='controladores/'.$controlador.'.php';
-        echo $strFileController."-----";
         if(!is_file($strFileController)){
             $strFileController='controladores/ctrl_usuario.php';  
             $controlador_clase="ControladorUsuario";
@@ -48,4 +44,3 @@ class ControladorIndex{
         return $url;
     }
 }
-?>

@@ -12,5 +12,4 @@
         'cache_dir' => 'libs/smarty/cache/',
         'config_dir' => 'libs/smarty/configs/',
         );
-    define ("URL_BASE","/php/framework/");
-?>
+    define ("URL_BASE","/clasePHP/clase6/Simulador-Mundial-2022/");
